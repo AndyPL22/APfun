@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^builder_APfun\.R$
+^README\.Rmd$
+^README-.*\.png$
