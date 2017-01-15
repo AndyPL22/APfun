@@ -3,3 +3,4 @@
 ^builder_APfun\.R$
 ^README\.Rmd$
 ^README-.*\.png$
+^\.travis\.yml$
