@@ -13,3 +13,4 @@ will open that file's directory}
 \description{
 Open a folder in Windows Explorer
 }
+

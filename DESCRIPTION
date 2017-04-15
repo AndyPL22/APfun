@@ -1,13 +1,18 @@
 Package: APfun
 Type: Package
 Title: Geo-Processing Base Functions
-Version: 0.1.0
-Date: 2017-01-14
+Version: 0.1.1
+Date: 2017-04-15
 Author: Andrew Plowright
 Maintainer: Andrew Plowright <andrew.plowright@alumni.ubc.ca>
-Description: Base tools for facilitating the creation geo-processing functions in R.
+Description: Base tools for facilitating the creation geo-processing functions
+    in R.
 License: GPL (>= 3)
 LazyData: TRUE
-RoxygenNote: 6.0.1
-Suggests: testthat
-Imports: raster
+RoxygenNote: 5.0.1
+Suggests:
+    testthat
+Imports:
+    raster,
+    rgdal,
+    methods

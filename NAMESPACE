@@ -2,6 +2,8 @@
 
 export(APcontours)
 export(APopen)
+export(APpolygonize)
 export(APprecise)
 export(AProunder)
 export(APtimer)
+importFrom(methods,is)

@@ -1,10 +1,11 @@
 #' AP Timer
 #'
 #' Basic timer.
-#' @param marker Optional object of class \code{'POSIXct'}
+#' @param marker Optional object of class \code{'POSIXct'}.
+#' @param hush logical. If set to TRUE, this will silence printing to console.
 #' @return If \code{marker=NULL}, then \code{APtimer} returns an object of class \code{'POSIXct'}.
 #' When this same object is used as an input later on, then \code{APtimer} will print the time elapsed
-#' since it was evaluated
+#' since it was evaluated.
 #' @export
 
 APtimer <- function(marker = NULL, hush = FALSE){
