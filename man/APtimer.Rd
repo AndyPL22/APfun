@@ -4,7 +4,7 @@
 \alias{APtimer}
 \title{AP Timer}
 \usage{
-APtimer(marker = NULL)
+APtimer(marker = NULL, hush = FALSE)
 }
 \arguments{
 \item{marker}{Optional object of class \code{'POSIXct'}}
@@ -17,4 +17,3 @@ since it was evaluated
 \description{
 Basic timer.
 }
-

@@ -8,5 +8,6 @@ Maintainer: Andrew Plowright <andrew.plowright@alumni.ubc.ca>
 Description: Base tools for facilitating the creation geo-processing functions in R.
 License: GPL (>= 3)
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: testthat
+Imports: raster

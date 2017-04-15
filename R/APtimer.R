@@ -7,19 +7,17 @@
 #' since it was evaluated
 #' @export
 
-APtimer <- function(marker = NULL){
+APtimer <- function(marker = NULL, hush = FALSE){
 
   # If no time marker is given, then create a new one
   if(is.null(marker)){
 
-    cat("Started timer at:", format(Sys.time(), "%Y-%m-%d, %X"), "\n")
+    if(!hush) cat("Started timer at:", format(Sys.time(), "%Y-%m-%d, %X"), "\n")
 
     return(proc.time())
 
   # If a marker is given, then return the time elapsed since that marker
   }else{
-
-    cat("Finished at:", format(Sys.time(), "%Y-%m-%d, %X"), "\n")
 
     elapsed.seconds <- (proc.time() - marker)["elapsed"]
 
@@ -30,6 +28,11 @@ APtimer <- function(marker = NULL){
     if(elapsed.seconds >= 3600){
       elapsed.print <- paste(round(elapsed.seconds/3600, 2), "hours")}
 
-    cat("Time elapsed:", elapsed.print,"\n")
+    if(!hush){
+      cat("Finished at:", format(Sys.time(), "%Y-%m-%d, %X"), "\n")
+      cat("Time elapsed:", elapsed.print,"\n")
+    }else{
+      return(elapsed.print)
+    }
   }
 }
