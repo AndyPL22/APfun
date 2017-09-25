@@ -32,4 +32,3 @@ files. Python must be installed in order to run \emph{gdal_polygonize.py}.
 \item John Baumgartner's blog post on \emph{gdal_polygonize}: \url{https://johnbaumgartner.wordpress.com/2012/07/26/getting-rasters-into-shape-from-r/}
 }
 }
-

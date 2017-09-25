@@ -5,7 +5,7 @@
 #' @param digits numeric. Number of digits to display
 #' @export
 
-APprecise <- function(x, digits = 22){
+APprecise <- function(x, digits = 16){
   oldDigits <- options()$digits
   options(digits = digits)
   print(x)

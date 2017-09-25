@@ -19,4 +19,3 @@ since it was evaluated.
 \description{
 Basic timer.
 }
-

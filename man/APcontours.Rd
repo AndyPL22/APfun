@@ -14,4 +14,3 @@ APcontours(inRaster, interval)
 \description{
 Creates contours with rounded values
 }
-
