@@ -42,9 +42,16 @@ APpolygonize <- function(inRaster, OSGeoPath = "C:\\OSGeo4W64", connectivity = 4
 
   # Write temporary raster if needed
   if(is(inRaster, 'Raster')){
-    rastpath <- tempfile(fileext='.asc')
-    raster::writeRaster(inRaster, rastpath)
-    on.exit(unlink(rastpath), add = TRUE)
+
+    # Check if 'inRaster' is already on the disk AND has an accepted file format
+    deniedFormat <- c("grd")
+    if(raster::fromDisk(inRaster) && !tools::file_ext(inRaster@file@name) %in% deniedFormat){
+      rastpath <- normalizePath(inRaster@file@name)
+    }else{
+      rastpath <- tempfile(fileext='.asc')
+      raster::writeRaster(inRaster, rastpath)
+      on.exit(unlink(rastpath), add = TRUE)
+    }
   }else{
     if(is.character(inRaster)){
       rastpath <- normalizePath(inRaster)

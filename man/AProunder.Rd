@@ -22,4 +22,3 @@ Rounded number
 Provides extra options for rounding numbers, such as rounding a value to uneven intervals
 and setting those intervals to 'snap' or pass through a defined origin value.
 }
-

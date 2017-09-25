@@ -4,7 +4,7 @@
 \alias{APprecise}
 \title{AP Precision}
 \usage{
-APprecise(x, digits = 22)
+APprecise(x, digits = 16)
 }
 \arguments{
 \item{x}{numeric. Input value value}
@@ -14,4 +14,3 @@ APprecise(x, digits = 22)
 \description{
 Prints input value with a set number digits.
 }
-
