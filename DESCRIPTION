@@ -5,8 +5,8 @@ Version: 0.1.2
 Date: 2017-09-25
 Author: Andrew Plowright
 Maintainer: Andrew Plowright <andrew.plowright@alumni.ubc.ca>
-Description: Helper tools for facilitating various geo-processing tasks
-    in R.
+Description: Helper tools for facilitating basic geo-processing tasks, such as reading/writing
+  Shapefiles, merging polygons or generating terrain contours.
 Depends: R (>= 3.3.2)
 License: GPL (>= 3)
 LazyData: TRUE

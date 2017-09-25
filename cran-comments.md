@@ -10,3 +10,7 @@
 ## Reverse dependencies
 
 All reverse dependacies checked.
+
+### Notes
+
+Added some function examples and a more descriptive package Description.
