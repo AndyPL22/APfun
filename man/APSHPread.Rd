@@ -17,3 +17,9 @@ SpatialPolygonsDataFrame
 \description{
 Read a Shapefile from a path
 }
+\examples{
+\dontrun{
+inPoly <- APSHPread("C:/Geodata/myfile.shp")
+}
+
+}

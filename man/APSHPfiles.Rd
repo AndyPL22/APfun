@@ -12,3 +12,9 @@ APSHPfiles(filePath)
 \description{
 Get all files associated to a shapefile
 }
+\examples{
+\dontrun{
+APSHPfiles("C:/Geodata/myfile.shp")
+}
+
+}

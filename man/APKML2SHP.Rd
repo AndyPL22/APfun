@@ -23,3 +23,9 @@ same folder as the \code{inFile}.}
 Read a KML file and save it to a SHP file and/or read it to memory. Requires the use of
 'ogrinfo.exe'.
 }
+\examples{
+\dontrun{
+APKML2SHP("C:/Geodata/myfile.kml", dropDescription = FALSE)
+}
+
+}

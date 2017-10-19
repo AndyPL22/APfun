@@ -4,9 +4,9 @@
 #'
 #' @param filePath character. Path to file
 #'
-#' @param examples
+#' @examples
 #' \dontrun{
-#' APSHPfiles("C:/Geodata/myfile.shp)}
+#' APSHPfiles("C:/Geodata/myfile.shp")
 #' }
 #'
 #' @export
@@ -25,9 +25,9 @@ APSHPfiles <- function(filePath){
 #'
 #' @param filePath character. Path to file
 #'
-#' @param examples
+#' @examples
 #' \dontrun{
-#' APSHPdel("C:/Geodata/myfile.shp)}
+#' APSHPdel("C:/Geodata/myfile.shp")
 #' }
 #' @export
 
@@ -46,9 +46,9 @@ APSHPdel <- function(filePath){
 #'
 #' @return SpatialPolygonsDataFrame
 #'
-#' @param examples
+#' @examples
 #' \dontrun{
-#' inPoly <- APSHPread("C:/Geodata/myfile.shp)}
+#' inPoly <- APSHPread("C:/Geodata/myfile.shp")
 #' }
 #'
 #' @export
@@ -81,9 +81,9 @@ APSHPread <- function(filePath, warnings = FALSE){
 #' @param readToMemory logical. Input will be return as Spatial object.
 #' @param dropDescription logical. If set to TRUE, the Description field of the KML file will be dropped
 #'
-#' @param examples
+#' @examples
 #' \dontrun{
-#' APKML2SHP("C:/Geodata/myfile.kml, dropDescription = FALSE)}
+#' APKML2SHP("C:/Geodata/myfile.kml", dropDescription = FALSE)
 #' }
 #'
 #' @export
@@ -122,9 +122,9 @@ APKML2SHP <- function(inFile, OSGeoPath = "C:\\OSGeo4W64", saveToFile = TRUE, re
 #' @param overwrite logical. Allow function to overwrite existing file. If set to 'prompt', it will
 #' ask user whether or to overwrite
 #'
-#' @param examples
+#' @examples
 #' \dontrun{
-#' APSHPsave(inPoly, outfile = "C:/Geodata/myfile.shp")}
+#' APSHPsave(inPoly, outfile = "C:/Geodata/myfile.shp")
 #' }
 #'
 #' @export

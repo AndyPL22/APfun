@@ -17,3 +17,9 @@ ask user whether or to overwrite}
 \description{
 Save a Spatial type object to disk as a Shapefile.
 }
+\examples{
+\dontrun{
+APSHPsave(inPoly, outfile = "C:/Geodata/myfile.shp")
+}
+
+}

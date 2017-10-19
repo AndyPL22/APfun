@@ -12,3 +12,8 @@ APSHPdel(filePath)
 \description{
 Delete a Shapefile and all associated files
 }
+\examples{
+\dontrun{
+APSHPdel("C:/Geodata/myfile.shp")
+}
+}
