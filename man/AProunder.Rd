@@ -7,18 +7,20 @@
 AProunder(value, interval, direction = "closest", snap = 0)
 }
 \arguments{
-\item{value}{numeric input value value}
+\item{value}{numeric or Extent object. Input value}
 
 \item{interval}{numeric. The interval to which the input value should be rounded}
 
-\item{direction}{character. The rounding direction. Can be \code{'closest'}, \code{'up'} or \code{'down'}}
+\item{direction}{character. The rounding direction. Can be \code{'closest'}, \code{'up'} or \code{'down'} for numeric
+\code{value} arguments or \code{'closest'}, \code{'in'} or \code{'out'} for Extent objects.}
 
 \item{snap}{numeric. An origin value through which the interval with pass through. Default is 0.}
 }
 \value{
-Rounded number
+Rounded number or Extent object
 }
 \description{
 Provides extra options for rounding numbers, such as rounding a value to uneven intervals
-and setting those intervals to 'snap' or pass through a defined origin value.
+and setting those intervals to 'snap' or pass through a defined origin value. Can also be used on
+Extent objects from the \code{raster} package.
 }
