@@ -9,7 +9,10 @@
 #'
 #' @param inRaster a RasterLayer or a path to a raster file
 #' @param OSGeoPath character. Path to the OSGeo4W installation directory
+#' @param readToMemory logical. Read output polygons into memory as a SpatialPolygonsDataFrame
+#' @param outFile character. Optional path for saving output as an Esri Shapefile.
 #' @param connectivity numeric. Can be either set to 4 (rook's case) or 8 (queen's case)
+#'
 #'
 #' @return SpatialPolygonsDataFrame
 #'
@@ -23,7 +26,7 @@
 #'
 #' @export
 
-APpolygonize <- function(inRaster, OSGeoPath = "C:\\OSGeo4W64", connectivity = 4){
+APpolygonize <- function(inRaster, readToMemory = TRUE, outFile = NULL, OSGeoPath = "C:\\OSGeo4W64", connectivity = 4){
 
   if(!connectivity %in% c(4,8)) stop("Connectivity can only be 4 or 8")
 
@@ -37,8 +40,15 @@ APpolygonize <- function(inRaster, OSGeoPath = "C:\\OSGeo4W64", connectivity = 4
   if(!file.exists(pypath)) stop("Could not find required file '", pypath, "'. Python may not have been installed with OSGeo")
 
   # Create temporary outfile if needed
-  outshape <- tempfile()
-  on.exit(unlink(list.files(dirname(outshape), pattern=basename(outshape), full.names = TRUE)))
+  if(is.null(outFile)){
+
+    outFile <- tempfile(fileext = ".shp")
+    on.exit(unlink(list.files(dirname(outFile), pattern=basename(outFile), full.names = TRUE)))
+
+  }else{
+
+    if(!file.exists(dirname(outFile))) stop("Could not find output folder")
+  }
 
   # Write temporary raster if needed
   if(is(inRaster, 'Raster')){
@@ -65,12 +75,13 @@ APpolygonize <- function(inRaster, OSGeoPath = "C:\\OSGeo4W64", connectivity = 4
   if(connectivity == 8) connectivity <- "-8 " else connectivity <- ""
 
   # Run OSGeo function
-  system2(batpath, args=sprintf('"%1$s" %2$s "%3$s" -f "%4$s" "%5$s.shp" -q',
-                        sub('\\.py$', '', polpath), connectivity, rastpath, "ESRI Shapefile", outshape))
+  system2(batpath, args=sprintf('"%1$s" %2$s "%3$s" -f "%4$s" "%5$s" -q',
+                        sub('\\.py$', '', polpath), connectivity, rastpath, "ESRI Shapefile", outFile))
 
   # Read output shapefile
-  shp <- rgdal::readOGR(dirname(outshape), layer = basename(outshape), verbose= FALSE)
-  raster::crs(shp) <- raster::crs(inRaster)
-  names(shp) <- "layer"
-  return(shp)
+  if(readToMemory){
+    shp <- APSHPread(outFile)
+    raster::crs(shp) <- raster::crs(inRaster)
+    return(shp)
+  }
 }

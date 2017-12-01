@@ -4,10 +4,15 @@
 \alias{APpolygonize}
 \title{AP Polygonize}
 \usage{
-APpolygonize(inRaster, OSGeoPath = "C:\\\\OSGeo4W64", connectivity = 4)
+APpolygonize(inRaster, readToMemory = TRUE, outFile = NULL,
+  OSGeoPath = "C:\\\\OSGeo4W64", connectivity = 4)
 }
 \arguments{
 \item{inRaster}{a RasterLayer or a path to a raster file}
+
+\item{readToMemory}{logical. Read output polygons into memory as a SpatialPolygonsDataFrame}
+
+\item{outFile}{character. Optional path for saving output as an Esri Shapefile.}
 
 \item{OSGeoPath}{character. Path to the OSGeo4W installation directory}
 
