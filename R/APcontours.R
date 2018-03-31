@@ -10,11 +10,13 @@
 APcontours <- function(inRaster, interval, max.contour.segments = NULL){
 
   # Seg maximum number of segments
-  oo <- options(max.contour.segments = max.contour.segments)
-  on.exit(options(oo))
+  if(!is.null(max.contour.segments)){
+    oo <- options(max.contour.segments = max.contour.segments)
+    on.exit(options(oo))
+  }
 
   # Get minimum and maximum raster values
-  rasterRange <- cellStats(inRaster, stat = "range")
+  rasterRange <- raster::cellStats(inRaster, stat = "range")
 
   # Get sequence of contour levels
   contLevels <- seq(AProunder(rasterRange[1], interval, "up"),
@@ -25,7 +27,7 @@ APcontours <- function(inRaster, interval, max.contour.segments = NULL){
   cont <- raster::rasterToContour(inRaster, levels = contLevels)
 
   # Make 'level' value numeric
-  cont[["level"]] <- as.numeric(cont[["level"]])
+  cont[["level"]] <- as.numeric(as.character(cont[["level"]]))
 
   return(cont)
 }
