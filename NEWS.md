@@ -1,3 +1,8 @@
+# APfun 0.1.3
+
+APcontours - Added ability to control maximum number of segments per contour line. Ensured that output object's 'levels' attribute was numeric instead of a string.
+
+
 # APfun 0.1.2
 
 Added following functions to facilitate reading and writing of Shapefiles

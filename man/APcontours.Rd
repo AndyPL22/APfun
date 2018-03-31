@@ -4,12 +4,15 @@
 \alias{APcontours}
 \title{AP Contours}
 \usage{
-APcontours(inRaster, interval)
+APcontours(inRaster, interval, max.contour.segments = NULL)
 }
 \arguments{
 \item{inRaster}{RasterLayer. A digital surface or digital elevation model}
 
 \item{interval}{numeric. Interval for contour intervals}
+
+\item{max.contour.segments}{numeric. Maximum number of segments for a single contour line. If set to 'NULL',
+default value will be 25,000.}
 }
 \description{
 Creates contours with rounded values
