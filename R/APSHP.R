@@ -13,7 +13,7 @@
 
 APSHPfiles <- function(filePath){
 
-  files <- paste0(tools::file_path_sans_ext(filePath), ".", APfun::SHPextensions)
+  files <- unlist(lapply(filePath, function(path) paste0(tools::file_path_sans_ext(path), ".", APfun::SHPextensions)))
 
   files[file.exists(files)]
 
