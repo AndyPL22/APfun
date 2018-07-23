@@ -7,4 +7,5 @@ devtools::use_data(SHPextensions)
 
 rasterExtensions <- list(tif = c("tif", "tif.aux.xml", "ovr", "tfw"))
 
+# Save data to package
 devtools::use_data(rasterExtensions)

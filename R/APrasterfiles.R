@@ -27,3 +27,13 @@ APrasterFiles <- function(filePath){
   files[file.exists(files)]
 
 }
+
+#' Raster Extensions
+#'
+#' A list object, for which each element corresponds to a type of raster file. The elements
+#' are character vectors of the extensions of the various metadata files that can be associated with
+#' that type of raster.
+#'
+#' @format list
+
+"rasterExtensions"
