@@ -147,6 +147,8 @@ APSHPsave <- function(object, outfile, overwrite = FALSE){
     }
   }
 
+  if(any(duplicated(names(object)))) stop("Duplicated column names, cannot write file")
+
   rgdal::writeOGR(object, dirname(outfile), basename(tools::file_path_sans_ext(outfile)),
                   driver = "ESRI Shapefile", overwrite = overwrite)
 }
