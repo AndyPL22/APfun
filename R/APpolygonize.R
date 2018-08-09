@@ -74,9 +74,12 @@ APpolygonize <- function(inRaster, readToMemory = TRUE, outFile = NULL, OSGeoPat
   # Set connectivity switch
   if(connectivity == 8) connectivity <- "-8 " else connectivity <- ""
 
-  # Run OSGeo function
-  system2(batpath, args=sprintf('"%1$s" %2$s "%3$s" -f "%4$s" "%5$s" -q',
-                        sub('\\.py$', '', polpath), connectivity, rastpath, "ESRI Shapefile", outFile))
+  # Make vector of arguments
+  args <- sprintf('"%1$s" %2$s "%3$s" -f "%4$s" "%5$s" -q',
+                  sub('\\.py$', '', polpath), connectivity, rastpath, "ESRI Shapefile", outFile)
+
+  # Run OSGeo function (silence poutput by setting 'stdout' to TRUE)
+  outputText <- system2(batpath, args = args, stdout = TRUE)
 
   # Read output shapefile
   if(readToMemory){
