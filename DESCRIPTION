@@ -1,8 +1,8 @@
 Package: APfun
 Type: Package
 Title: Geo-Processing Helper Functions
-Version: 0.1.3
-Date: 2018-03-31
+Version: 0.1.4
+Date: 2019-08-14
 Author: Andrew Plowright
 Maintainer: Andrew Plowright <andrew.plowright@alumni.ubc.ca>
 Description: Helper tools for facilitating basic geo-processing tasks, such as reading/writing
@@ -10,7 +10,7 @@ Description: Helper tools for facilitating basic geo-processing tasks, such as r
 Depends: R (>= 3.4.0)
 License: GPL (>= 3)
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests:
     testthat
 Imports:
@@ -18,5 +18,4 @@ Imports:
     raster,
     rgdal,
     methods,
-    yesno,
     maptools
