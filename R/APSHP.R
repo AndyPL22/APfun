@@ -13,7 +13,14 @@
 
 APSHPfiles <- function(filePath){
 
-  files <- unlist(lapply(filePath, function(path) paste0(tools::file_path_sans_ext(path), ".", APfun::SHPextensions)))
+  fn <- function(path) paste0(tools::file_path_sans_ext(path), ".", APfun::SHPextensions)
+
+  if(is.null(names(filePath))){
+    files <- unlist(lapply(filePath, fn))
+  }else{
+    files <- stack(lapply(filePath, fn))
+    files <- structure(files[,"values"], names = as.character(files[,"ind"]))
+  }
 
   files[file.exists(files)]
 
@@ -58,57 +65,19 @@ APSHPread <- function(filePath, warnings = FALSE){
   if(length(filePath) > 1) stop("Please input only one file path")
   if(!file.exists(filePath)) stop("File does not exist: ", filePath)
 
-  if(warnings){
-    rgdal::readOGR(dirname(filePath), tools::file_path_sans_ext(basename(filePath)),
-                   verbose = FALSE,
-                   stringsAsFactors = FALSE)
-  }else{
-    suppressWarnings(rgdal::readOGR(dirname(filePath), tools::file_path_sans_ext(basename(filePath)),
-                   verbose = FALSE,
-                   stringsAsFactors = FALSE))
+  if(!warnings){
+    oldw <- getOption("warn")
+    on.exit(  options(warn = oldw))
+    options(warn = -1)
   }
-}
 
-#' AP Convert KLM to SHP
-#'
-#' Read a KML file and save it to a SHP file and/or read it to memory. Requires the use of
-#' 'ogrinfo.exe'.
-#'
-#' @param inFile path to a KML file
-#' @param OSGeoPath character. Path to the OSGeo4W installation directory.
-#' @param saveToFile logical. Save object as a Shapefile. File will be saved with the same name and in the
-#' same folder as the \code{inFile}.
-#' @param readToMemory logical. Input will be return as Spatial object.
-#' @param dropDescription logical. If set to TRUE, the Description field of the KML file will be dropped
-#'
-#' @examples
-#' \dontrun{
-#' APKML2SHP("C:/Geodata/myfile.kml", dropDescription = FALSE)
-#' }
-#'
-#' @export
-
-APKML2SHP <- function(inFile, OSGeoPath = "C:\\OSGeo4W64", saveToFile = TRUE, readToMemory = FALSE, dropDescription = TRUE){
-
-  # Check if 'ogrinfo.exe' exists
-  ogrinfo <- file.path(OSGeoPath,"bin", "ogrinfo.exe")
-  if(!file.exists(ogrinfo)) stop("Could not find file: ", ogrinfo)
-
-  # Get layer name using 'ogrinfo.exe'
-  kmlHeader <- system2(ogrinfo, args= inFile, stdout = TRUE)
-  layerName <- strsplit(kmlHeader[3], "1: ")[[1]]
-  if(length(kmlHeader) != 3 || length(layerName) != 2) stop("Could not read layer name from header:", "\n", paste(kmlHeader, collapse = "\n"))
-  layerName <- layerName[2]
-
-  # Read KML file
-  inSHP <- rgdal::readOGR(inFile, layerName)
-
-  # Drop messy 'Description' field
-  if(dropDescription) inSHP@data <- subset(inSHP@data, select = names(inSHP) != "Description")
-
-  if(saveToFile) rgdal::writeOGR(inSHP, dirname(inFile), basename(tools::file_path_sans_ext(inFile)), driver = "ESRI Shapefile")
-
-  if(readToMemory) return(inSHP)
+  rgdal::readOGR(
+    dsn     = dirname(filePath),
+    layer   = tools::file_path_sans_ext(basename(filePath)),
+    verbose = FALSE,
+    addCommentsToPolygons = FALSE,
+    stringsAsFactors      = FALSE
+  )
 
 }
 
@@ -134,23 +103,14 @@ APSHPsave <- function(object, outfile, overwrite = FALSE){
   if(!inherits(object, "Spatial")) stop("Input must be a Spatial object")
   if(!dir.exists(dirname(outfile))) stop("Output folder not found")
 
-  if(overwrite == "prompt"){
-    if(file.exists(outfile)){
-      userInput <- yesno::yesno(paste0("File '",outfile, "' already exists.\nOverwrite?"))
-      if(userInput){
-        overwrite <- TRUE
-      }else{
-        stop()
-      }
-    }else{
-      overwrite <- FALSE
-    }
-  }
-
   if(any(duplicated(names(object)))) stop("Duplicated column names, cannot write file")
 
-  rgdal::writeOGR(object, dirname(outfile), basename(tools::file_path_sans_ext(outfile)),
-                  driver = "ESRI Shapefile", overwrite = overwrite)
+  rgdal::writeOGR(
+    object, dirname(outfile),
+    basename(tools::file_path_sans_ext(outfile)),
+    driver = "ESRI Shapefile",
+    overwrite = overwrite
+  )
 }
 
 #' Shapefile extensions
