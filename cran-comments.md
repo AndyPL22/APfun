@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows install, R 3.4
+* local Windows install, R 3.5.1
 * ubuntu 14.04.5 (on travis-ci), R 3.4
 * Win-builder (devel and release)
 
@@ -13,4 +13,4 @@ All reverse dependacies checked.
 
 ### Notes
 
-Added some function examples and a more descriptive package Description.
+Made some bug fixes
