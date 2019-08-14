@@ -16,7 +16,12 @@ APcontours <- function(inRaster, interval, max.contour.segments = NULL){
   }
 
   # Get minimum and maximum raster values
-  rasterRange <- raster::cellStats(inRaster, stat = "range")
+  rasInfo <- tryCatch(rgdal::GDALinfo(inRaster@file@name), warning = function(x) FALSE, error = function(e) FALSE)
+  rasterRange <- if(class(rasInfo) == "GDALobj"){
+    unlist(attributes(rasInfo)$df[,c("Bmin", "Bmax")])
+  }else{
+    raster::cellStats(inRaster, stat = "range")
+  }
 
   # Get sequence of contour levels
   contLevels <- seq(AProunder(rasterRange[1], interval, "up"),
