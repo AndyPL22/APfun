@@ -18,7 +18,7 @@ APSHPfiles <- function(filePath){
   if(is.null(names(filePath))){
     files <- unlist(lapply(filePath, fn))
   }else{
-    files <- stack(lapply(filePath, fn))
+    files <- utils::stack(lapply(filePath, fn))
     files <- structure(files[,"values"], names = as.character(files[,"ind"]))
   }
 

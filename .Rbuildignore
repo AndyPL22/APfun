@@ -6,4 +6,4 @@
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^data-raw$
-^inProgress$
+^WIP$
