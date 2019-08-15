@@ -10,7 +10,7 @@ APfun: Base tools for facilitating the creation geo-processing functions in R
 **Authors:** Andrew Plowright<br/>
 **License:** GPL 3
 
-[![Build Status](https://travis-ci.org/AndyPL22/APfun.svg?branch=master)](https://travis-ci.org/AndyPL22/APfun)
+[![Build Status](https://travis-ci.org/andrew-plowright/APfun.svg?branch=master)](https://travis-ci.org/andrew-plowright/APfun)
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
