@@ -4,8 +4,13 @@
 \alias{APpolygonize}
 \title{AP Polygonize}
 \usage{
-APpolygonize(inRaster, readToMemory = TRUE, outFile = NULL,
-  OSGeoPath = "C:\\\\OSGeo4W64", connectivity = 4)
+APpolygonize(
+  inRaster,
+  readToMemory = TRUE,
+  outFile = NULL,
+  OSGeoPath = "C:\\\\OSGeo4W64",
+  connectivity = 4
+)
 }
 \arguments{
 \item{inRaster}{a RasterLayer or a path to a raster file}
