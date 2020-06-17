@@ -4,7 +4,9 @@
 \name{rasterExtensions}
 \alias{rasterExtensions}
 \title{Raster Extensions}
-\format{list}
+\format{
+list
+}
 \usage{
 rasterExtensions
 }

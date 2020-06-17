@@ -4,7 +4,9 @@
 \name{SHPextensions}
 \alias{SHPextensions}
 \title{Shapefile extensions}
-\format{Character vector}
+\format{
+Character vector
+}
 \source{
 https://en.wikipedia.org/wiki/Shapefile
 }

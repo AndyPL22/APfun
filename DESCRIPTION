@@ -10,7 +10,7 @@ Description: Helper tools for facilitating basic geo-processing tasks, such as r
 Depends: R (>= 3.4.0)
 License: GPL (>= 3)
 LazyData: TRUE
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests:
     testthat
 Imports:
