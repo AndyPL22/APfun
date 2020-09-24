@@ -8,7 +8,7 @@ APpolygonize(
   inRaster,
   readToMemory = TRUE,
   outFile = NULL,
-  OSGeoPath = "C:\\\\OSGeo4W64",
+  OSGeoPath = "C:/OSGeo4W64",
   connectivity = 4
 )
 }
@@ -32,12 +32,12 @@ was adapted from the solution developed by John Baumgartner and Francisco Rodrig
 }
 \details{
 This function needs OSGeo4W to be installed. The OSGeo4W installation path,
-set to 'C:\\OSGeo4W64' by default, will then be used to find the \emph{OSGeo4W.bat} and \emph{gdal_polygonize.py}
-files. Python must be installed in order to run \emph{gdal_polygonize.py}.
+set to 'C:/OSGeo4W64' by default, will then be used to find the \emph{gdal_polygonize.bat}
+file.
 }
 \seealso{
 \itemize{
-\item GDAL: \url{http://www.gdal.org/}
+\item GDAL: \url{https://gdal.org/}
 \item OSGeo4W download page: \url{https://trac.osgeo.org/osgeo4w/}
 \item John Baumgartner's blog post on \emph{gdal_polygonize}: \url{https://johnbaumgartner.wordpress.com/2012/07/26/getting-rasters-into-shape-from-r/}
 }
