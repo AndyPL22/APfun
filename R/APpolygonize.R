@@ -11,6 +11,7 @@
 #' @param readToMemory logical. Read output polygons into memory as a SpatialPolygonsDataFrame
 #' @param outFile character. Optional path for saving output as an Esri Shapefile.
 #' @param OSGeoPath character. Path to the OSGeo4W installation directory
+#' @param batPath character. Path to 'gdal_polygonize.bat'. If not specified, it'll default to \code{"%OSGEO4W_ROOT%/bin/gdal_polygonize.bat"}
 #' @param connectivity numeric. Can be either set to 4 (rook's case) or 8 (queen's case)
 #'
 #' @return SpatialPolygonsDataFrame
@@ -25,15 +26,15 @@
 #'
 #' @export
 
-APpolygonize <- function(inRaster, readToMemory = TRUE, outFile = NULL, OSGeoPath = "C:/OSGeo4W64", connectivity = 4){
+APpolygonize <- function(inRaster, readToMemory = TRUE, outFile = NULL, OSGeoPath = "C:/OSGeo4W64", batPath = NULL ,connectivity = 4){
 
   if(!connectivity %in% c(4,8)) stop("Connectivity can only be 4 or 8")
 
-  # Check if OSGeo files exist
+  # Check if OSGeo root folder exists
   if(!file.exists(OSGeoPath)) stop("Could not find folder '", OSGeoPath, "'")
 
   # Get path for 'gdal_polygonize.bat'
-  batPath <- file.path(OSGeoPath, "bin", "gdal_polygonize.bat")
+  if(is.null(batPath)) batPath <- file.path(OSGeoPath, "bin", "gdal_polygonize.bat")
   if(!file.exists(batPath)) stop("Could not find required file '", batPath, "'")
 
   # Create temporary output file if needed
