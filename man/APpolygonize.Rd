@@ -9,7 +9,6 @@ APpolygonize(
   readToMemory = TRUE,
   outFile = NULL,
   OSGeoPath = "C:/OSGeo4W64",
-  batPath = NULL,
   connectivity = 4
 )
 }
